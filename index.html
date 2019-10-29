@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Visiblity Bug Sample</title>
+    <style>
+      .root {
+        width: 100%;
+        margin: 2rem 0;
+      }
+      .event-log {
+        width: 100%;
+        text-align: center;
+        margin: 0.5rem;
+      }
+    </style>
+    <script>
+      function addElement() {
+        var test = document.querySelector(".root");
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("event-log");
+        newDiv.innerText =
+          "EVENT FIRED - DOCUMENT " +
+          document.visibilityState.toUpperCase() +
+          " " +
+          new Date().toLocaleTimeString();
+        test.appendChild(newDiv);
+      }
+
+      document.addEventListener("visibilitychange", addElement);
+    </script>
+  </head>
+  <body>
+    <div class="root"></div>
+  </body>
+</html>
+
